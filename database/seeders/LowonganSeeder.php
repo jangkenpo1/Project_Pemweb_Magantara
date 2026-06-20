@@ -1,0 +1,636 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\Lowongan;
+use App\Models\Perusahaan;
+use Carbon\Carbon;
+
+class LowonganSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $now   = Carbon::now();
+        $plus2 = $now->copy()->addMonths(2)->toDateString();
+        $plus3 = $now->copy()->addMonths(3)->toDateString();
+        $plus4 = $now->copy()->addMonths(4)->toDateString();
+
+        // Helper: get company ID by name snippet
+        $id = fn(string $name) => Perusahaan::where('name', 'like', "%$name%")->value('id');
+
+        $lowongans = [
+
+            // ── GOJEK (id: 3) ──────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('Gojek'),
+                'title'           => 'Backend Engineer Intern',
+                'description'     => "Bergabunglah dengan tim Engineering Gojek dan ikut membangun layanan backend yang melayani jutaan pengguna setiap harinya. Kamu akan bekerja langsung dengan engineer berpengalaman dalam ekosistem microservices berskala besar.",
+                'responsibilities'=> "- Membantu pengembangan dan pemeliharaan layanan backend\n- Berkolaborasi dengan tim product & frontend dalam sprint Agile\n- Menulis unit test dan melakukan code review\n- Menganalisis performa sistem dan mengusulkan optimasi",
+                'qualifications'  => "- Mahasiswa aktif semester 5+ jurusan Ilmu Komputer / Teknik Informatika\n- Menguasai minimal satu bahasa: Go, Java, atau Python\n- Memahami konsep REST API dan database relasional\n- Familiar dengan Git dan metodologi Agile",
+                'benefits'        => "- Uang saku kompetitif\n- Mentoring langsung dari senior engineer\n- Akses ke internal learning platform\n- Free GoFood selama magang\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 5,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 156,
+                'skills'          => [8, 7, 20, 47, 28, 50], // Python, Node.js, MySQL, REST API, Git, Agile
+            ],
+            [
+                'perusahaan_id'   => $id('Gojek'),
+                'title'           => 'Data Analyst Intern',
+                'description'     => "Gojek membuka kesempatan bagi mahasiswa yang antusias di bidang data untuk bergabung sebagai Data Analyst Intern. Kamu akan mengolah data besar dari jutaan transaksi untuk menghasilkan insight yang berdampak langsung pada keputusan bisnis.",
+                'responsibilities'=> "- Mengumpulkan, membersihkan, dan menganalisis data transaksi\n- Membuat visualisasi dan dashboard laporan\n- Mendukung tim product dalam pengambilan keputusan berbasis data\n- Menyusun laporan analitik mingguan",
+                'qualifications'  => "- Mahasiswa aktif jurusan Statistika, Matematika, atau Informatika\n- Menguasai SQL dan Python (Pandas, NumPy)\n- Familiar dengan tools visualisasi (Tableau / Power BI / Google Looker)\n- Kemampuan komunikasi data yang baik",
+                'benefits'        => "- Uang saku kompetitif\n- Akses dataset nyata berskala besar\n- Mentoring dari tim Data Science\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 3,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 156,
+                'skills'          => [8, 20, 39, 53, 52, 51], // Python, MySQL, Data Analysis, Tableau, Power BI, Excel
+            ],
+            [
+                'perusahaan_id'   => $id('Gojek'),
+                'title'           => 'UI/UX Design Intern',
+                'description'     => "Jadilah bagian dari tim desain Gojek yang merancang pengalaman pengguna untuk jutaan orang. Kamu akan terlibat dalam proses desain end-to-end dari riset pengguna hingga prototyping.",
+                'responsibilities'=> "- Melakukan user research dan usability testing\n- Membuat wireframe, prototype, dan final design\n- Berkolaborasi dengan tim product dan engineering\n- Menjaga konsistensi design system Gojek",
+                'qualifications'  => "- Mahasiswa aktif jurusan Desain Komunikasi Visual / Desain Produk\n- Menguasai Figma\n- Portofolio desain UI/UX yang kuat\n- Pemahaman dasar UX research",
+                'benefits'        => "- Uang saku kompetitif\n- Feedback langsung dari senior designer\n- Portofolio nyata dari produk skala besar\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 2,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 156,
+                'skills'          => [34, 35, 36, 37], // UI/UX Design, Figma, Adobe XD, Illustrator
+            ],
+
+            // ── TOKOPEDIA (id: 4) ────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('Tokopedia'),
+                'title'           => 'Frontend Developer Intern',
+                'description'     => "Tokopedia membuka peluang magang bagi developer frontend berbakat untuk ikut membangun halaman-halaman yang dikunjungi jutaan pengguna setiap hari. Kamu akan bekerja dengan stack modern React/TypeScript di lingkungan yang kolaboratif.",
+                'responsibilities'=> "- Membangun fitur UI baru berdasarkan desain dari tim produk\n- Melakukan optimasi performa halaman\n- Menulis unit dan integration test\n- Berkolaborasi dengan tim backend untuk integrasi API",
+                'qualifications'  => "- Mahasiswa aktif semester 5+ jurusan Teknik Informatika / Ilmu Komputer\n- Menguasai React.js dan TypeScript\n- Memahami HTML, CSS, dan responsive design\n- Familiar dengan Git",
+                'benefits'        => "- Uang saku kompetitif\n- Mentoring dari senior engineer\n- Pengalaman membangun produk skala nasional\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 4,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [5, 4, 3, 24, 25, 28], // React, TypeScript, JS, HTML, CSS, Git
+            ],
+            [
+                'perusahaan_id'   => $id('Tokopedia'),
+                'title'           => 'Digital Marketing Intern',
+                'description'     => "Bergabunglah dengan tim Growth & Marketing Tokopedia untuk belajar cara platform e-commerce terbesar Indonesia menjangkau jutaan pelanggan. Kamu akan terlibat langsung dalam perencanaan dan eksekusi kampanye digital.",
+                'responsibilities'=> "- Membantu perencanaan dan eksekusi kampanye digital\n- Membuat konten untuk media sosial dan email marketing\n- Menganalisis performa kampanye (CTR, ROAS, conversion)\n- Melakukan riset kompetitor dan tren pasar",
+                'qualifications'  => "- Mahasiswa aktif jurusan Marketing, Komunikasi, atau Bisnis\n- Familiar dengan platform iklan digital (Google Ads, Meta Ads)\n- Kemampuan copywriting yang baik\n- Analitis dan detail-oriented",
+                'benefits'        => "- Uang saku kompetitif\n- Akses ke tools premium marketing\n- Pengalaman kampanye skala nasional\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 3,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [56, 55, 58, 57], // Digital Marketing, SEO, Social Media, Content Writing
+            ],
+            [
+                'perusahaan_id'   => $id('Tokopedia'),
+                'title'           => 'Product Management Intern',
+                'description'     => "Jadilah calon Product Manager masa depan bersama Tokopedia! Kamu akan belajar bagaimana mendefinisikan visi produk, bekerja lintas fungsi, dan mengeksekusi roadmap produk yang berdampak pada jutaan pengguna.",
+                'responsibilities'=> "- Mendukung PM dalam riset kebutuhan pengguna\n- Membantu penulisan Product Requirements Document (PRD)\n- Menganalisis data produk dan mengusulkan eksperimen\n- Berkoordinasi dengan tim design dan engineering",
+                'qualifications'  => "- Mahasiswa aktif semester 6+ berbagai jurusan\n- Kemampuan analitik dan pemecahan masalah yang kuat\n- Komunikasi dan kolaborasi yang baik\n- Familiar dengan tools seperti Jira, Figma, atau SQL adalah nilai plus",
+                'benefits'        => "- Uang saku kompetitif\n- Mentoring langsung dari Senior PM\n- Networking dengan tim product world-class\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 6,
+                'quota'           => 2,
+                'deadline'        => $plus4,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [50, 63, 39, 20, 64], // Agile, Manajemen Proyek, Data Analysis, MySQL, Komunikasi
+            ],
+
+            // ── SHOPEE (id: 5) ───────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('Shopee'),
+                'title'           => 'Mobile Developer Intern (Android)',
+                'description'     => "Shopee mencari Android Developer Intern berbakat untuk ikut membangun fitur-fitur baru di aplikasi Shopee yang digunakan oleh ratusan juta pengguna di Asia Tenggara.",
+                'responsibilities'=> "- Mengembangkan fitur Android baru sesuai spesifikasi\n- Berkolaborasi dengan tim iOS, Backend, dan QA\n- Menulis kode yang bersih, terstruktur, dan teruji\n- Melakukan debugging dan optimasi performa aplikasi",
+                'qualifications'  => "- Mahasiswa aktif semester 5+ jurusan Teknik Informatika\n- Menguasai Kotlin dan Android SDK\n- Familiar dengan Git dan konsep MVVM/MVP\n- Familiar dengan REST API",
+                'benefits'        => "- Uang saku kompetitif\n- Akses ke codebase aplikasi skala global\n- Free Shopee voucher\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 5,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 156,
+                'skills'          => [16, 45, 47, 28, 11], // Kotlin, Android, REST API, Git, Java
+            ],
+            [
+                'perusahaan_id'   => $id('Shopee'),
+                'title'           => 'Business Development Intern',
+                'description'     => "Bergabunglah dengan tim Business Development Shopee dan pelajari cara kami mengakuisisi dan mengembangkan kemitraan bisnis strategis dengan brand dan merchant terkemuka di Indonesia.",
+                'responsibilities'=> "- Membantu identifikasi dan outreach merchant potensial\n- Mendukung negosiasi dan onboarding merchant baru\n- Menganalisis data performa merchant\n- Menyusun laporan dan presentasi untuk manajemen",
+                'qualifications'  => "- Mahasiswa aktif jurusan Bisnis, Manajemen, atau Ekonomi\n- Kemampuan komunikasi dan negosiasi yang baik\n- Analitis, proaktif, dan mampu bekerja di lingkungan dinamis\n- Kemampuan Microsoft Excel/Spreadsheet yang baik",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman bekerja di industri e-commerce global\n- Networking yang luas\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 3,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 156,
+                'skills'          => [51, 64, 65, 63], // Excel, Komunikasi, Public Speaking, Manajemen Proyek
+            ],
+            [
+                'perusahaan_id'   => $id('Shopee'),
+                'title'           => 'Data Science Intern',
+                'description'     => "Shopee Data Science team membuka kesempatan magang bagi mahasiswa yang passionate di bidang machine learning dan AI. Kamu akan bekerja pada proyek-proyek nyata yang berdampak pada sistem rekomendasi dan deteksi fraud Shopee.",
+                'responsibilities'=> "- Eksplorasi dan preprocessing dataset besar\n- Membangun dan mengevaluasi model machine learning\n- Berkolaborasi dengan tim Engineering untuk deployment model\n- Mendokumentasikan eksperimen dan hasil penelitian",
+                'qualifications'  => "- Mahasiswa aktif jurusan Informatika, Statistika, atau Matematika\n- Menguasai Python (Scikit-learn, Pandas, NumPy)\n- Memiliki pemahaman tentang Machine Learning\n- Familiar dengan SQL",
+                'benefits'        => "- Uang saku kompetitif\n- Akses ke GPU cluster untuk training model\n- Mentoring dari Data Scientist berpengalaman\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 6,
+                'quota'           => 3,
+                'deadline'        => $plus4,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 156,
+                'skills'          => [8, 40, 41, 42, 20, 39], // Python, ML, Deep Learning, TensorFlow, MySQL, Data Analysis
+            ],
+
+            // ── BTN (id: 6) ──────────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('Bank Tabungan'),
+                'title'           => 'IT Developer Intern',
+                'description'     => "BTN membuka kesempatan magang bagi mahasiswa IT untuk ikut membangun sistem perbankan digital yang melayani jutaan nasabah KPR dan tabungan di seluruh Indonesia.",
+                'responsibilities'=> "- Membantu pengembangan aplikasi perbankan internal\n- Melakukan testing dan quality assurance\n- Mendokumentasikan proses teknis\n- Berkolaborasi dengan tim IT dan bisnis",
+                'qualifications'  => "- Mahasiswa aktif semester 5+ jurusan Teknik Informatika / Sistem Informasi\n- Menguasai PHP atau Java\n- Familiar dengan database MySQL atau PostgreSQL\n- Memiliki kemampuan analitis yang baik",
+                'benefits'        => "- Uang saku sesuai ketentuan BUMN\n- Pengalaman di industri perbankan\n- Sertifikat magang resmi dari BUMN",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 5,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [1, 11, 20, 21, 28], // PHP, Java, MySQL, PostgreSQL, Git
+            ],
+            [
+                'perusahaan_id'   => $id('Bank Tabungan'),
+                'title'           => 'Analisis Kredit & Keuangan Intern',
+                'description'     => "Pelajari proses analisis kredit perumahan di bank BUMN terbesar Indonesia. Kamu akan mendapatkan pengalaman langsung dalam proses seleksi dan evaluasi pengajuan KPR.",
+                'responsibilities'=> "- Membantu analisis kelayakan kredit nasabah\n- Menyiapkan laporan keuangan dan kredit\n- Melakukan verifikasi dokumen nasabah\n- Mendukung administrasi kredit",
+                'qualifications'  => "- Mahasiswa aktif jurusan Akuntansi, Keuangan, atau Ekonomi\n- Memahami dasar-dasar analisis keuangan\n- Teliti, jujur, dan berorientasi pada detail\n- Menguasai Microsoft Excel",
+                'benefits'        => "- Uang saku sesuai ketentuan BUMN\n- Pengalaman perbankan yang berharga\n- Sertifikat magang resmi dari BUMN",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 8,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [59, 60, 62, 51], // Akuntansi, Keuangan, Audit, Excel
+            ],
+            [
+                'perusahaan_id'   => $id('Bank Tabungan'),
+                'title'           => 'Digital Banking & Marketing Intern',
+                'description'     => "Bergabunglah dengan tim Digital BTN untuk membantu mengembangkan strategi pemasaran produk perbankan digital BTN Mobile kepada generasi milenial dan Gen-Z.",
+                'responsibilities'=> "- Mendukung kampanye digital marketing produk BTN\n- Membuat konten media sosial yang menarik\n- Menganalisis performa kampanye digital\n- Membantu koordinasi event promosi",
+                'qualifications'  => "- Mahasiswa aktif jurusan Marketing, Komunikasi, atau Manajemen\n- Familiar dengan platform media sosial dan dasar digital marketing\n- Kreatif dan mampu membuat konten yang menarik\n- Komunikatif dan proaktif",
+                'benefits'        => "- Uang saku sesuai ketentuan BUMN\n- Pengalaman marketing di industri perbankan\n- Sertifikat magang resmi dari BUMN",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 4,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [56, 58, 57, 55], // Digital Marketing, Social Media, Content Writing, SEO
+            ],
+
+            // ── PLN (id: 7) ──────────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('PLN'),
+                'title'           => 'Teknik Elektro Intern',
+                'description'     => "PLN membuka kesempatan magang bagi mahasiswa Teknik Elektro untuk ikut berkontribusi dalam pengelolaan sistem kelistrikan nasional. Pengalaman nyata di infrastruktur kelistrikan Indonesia skala besar.",
+                'responsibilities'=> "- Membantu pemeliharaan dan monitoring sistem distribusi listrik\n- Mendukung analisis gangguan jaringan listrik\n- Membuat laporan teknis harian\n- Berpartisipasi dalam survei lapangan",
+                'qualifications'  => "- Mahasiswa aktif semester 5+ jurusan Teknik Elektro\n- Memahami dasar sistem tenaga listrik dan distribusi\n- Bersedia ditempatkan di unit kerja PLN\n- Fisik sehat dan siap kerja lapangan",
+                'benefits'        => "- Uang saku sesuai ketentuan BUMN\n- Pengalaman lapangan di infrastruktur nasional\n- Sertifikat magang resmi BUMN",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 10,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [44, 31, 28, 51], // Networking, Linux, Git, Excel
+            ],
+            [
+                'perusahaan_id'   => $id('PLN'),
+                'title'           => 'IT & Sistem Informasi Intern',
+                'description'     => "PLN membuka peluang magang di bidang IT untuk mendukung transformasi digital BUMN kelistrikan Indonesia. Kamu akan terlibat dalam pengembangan dan pengelolaan sistem informasi PLN.",
+                'responsibilities'=> "- Membantu pengembangan dan maintenance aplikasi internal PLN\n- Mendukung pengelolaan infrastruktur IT\n- Melakukan testing sistem informasi\n- Membuat dokumentasi teknis",
+                'qualifications'  => "- Mahasiswa aktif jurusan Sistem Informasi / Teknik Informatika\n- Menguasai salah satu bahasa pemrograman (PHP/Java/Python)\n- Familiar dengan database MySQL\n- Teliti dan sistematis",
+                'benefits'        => "- Uang saku sesuai ketentuan BUMN\n- Pengalaman IT di perusahaan BUMN skala nasional\n- Sertifikat magang resmi BUMN",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 6,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [1, 8, 20, 28, 44], // PHP, Python, MySQL, Git, Networking
+            ],
+            [
+                'perusahaan_id'   => $id('PLN'),
+                'title'           => 'Komunikasi & Hubungan Masyarakat Intern',
+                'description'     => "Bergabung dengan tim Corporate Communications PLN untuk mendukung kegiatan komunikasi publik dan CSR perusahaan kelistrikan negara dalam mewujudkan transisi energi bersih Indonesia.",
+                'responsibilities'=> "- Membantu pengelolaan konten media sosial PLN\n- Mendukung kegiatan hubungan masyarakat dan CSR\n- Menulis siaran pers dan artikel blog\n- Mendokumentasikan kegiatan perusahaan",
+                'qualifications'  => "- Mahasiswa aktif jurusan Komunikasi, Hubungan Masyarakat, atau Jurnalistik\n- Kemampuan menulis yang baik dalam Bahasa Indonesia\n- Kreatif dan terampil menggunakan media sosial\n- Mampu bekerja di lingkungan yang dinamis",
+                'benefits'        => "- Uang saku sesuai ketentuan BUMN\n- Pengalaman di perusahaan BUMN ternama\n- Sertifikat magang resmi BUMN",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 3,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [57, 58, 64, 65], // Content Writing, Social Media, Komunikasi, Public Speaking
+            ],
+
+            // ── PELINDO (id: 8) ──────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('Pelindo'),
+                'title'           => 'Operasional Terminal Petikemas Intern',
+                'description'     => "Dapatkan pengalaman unik bekerja di terminal petikemas terbesar Indonesia. Kamu akan mempelajari seluruh siklus operasional pelabuhan dari bongkar muat hingga manajemen gudang.",
+                'responsibilities'=> "- Membantu monitoring operasional bongkar muat petikemas\n- Mendukung koordinasi dengan shipper dan pelayaran\n- Menginput dan memverifikasi data operasional\n- Membuat laporan harian operasional",
+                'qualifications'  => "- Mahasiswa aktif jurusan Teknik Perkapalan, Logistik, atau Manajemen\n- Bersedia bekerja sistem shift\n- Komunikatif dan mampu bekerja di lapangan\n- Familiar dengan Microsoft Office",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman langsung di pelabuhan internasional\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 8,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 15,
+                'city_id'         => 264,
+                'skills'          => [51, 63, 64, 39], // Excel, Manajemen Proyek, Komunikasi, Data Analysis
+            ],
+            [
+                'perusahaan_id'   => $id('Pelindo'),
+                'title'           => 'IT Sistem Informasi Pelabuhan Intern',
+                'description'     => "Pelindo Terminal Petikemas membuka peluang magang IT untuk mendukung digitalisasi sistem operasional pelabuhan. Proyek nyata dalam pengembangan sistem TOS (Terminal Operating System).",
+                'responsibilities'=> "- Membantu pengembangan dan integrasi sistem TOS\n- Mendukung tim IT dalam pengelolaan infrastruktur jaringan\n- Melakukan testing dan debugging sistem\n- Mendokumentasikan alur proses sistem",
+                'qualifications'  => "- Mahasiswa aktif jurusan Teknik Informatika / Sistem Informasi\n- Menguasai PHP atau Java\n- Familiar dengan database dan jaringan komputer\n- Bersedia ditempatkan di Surabaya",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman sistem IT pelabuhan skala internasional\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 4,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 15,
+                'city_id'         => 264,
+                'skills'          => [1, 20, 44, 28, 47], // PHP, MySQL, Networking, Git, REST API
+            ],
+
+            // ── KIMIA FARMA (id: 9) ──────────────────────────────────
+            [
+                'perusahaan_id'   => $id('Kimia Farma'),
+                'title'           => 'Farmasi & Quality Control Intern',
+                'description'     => "Kimia Farma membuka kesempatan magang bagi mahasiswa Farmasi untuk belajar langsung proses quality control produk farmasi di fasilitas produksi berstandar GMP (Good Manufacturing Practice) internasional.",
+                'responsibilities'=> "- Membantu pengujian mutu bahan baku dan produk jadi\n- Mendukung dokumentasi proses QC sesuai SOP\n- Berpartisipasi dalam kalibrasi alat laboratorium\n- Membuat laporan hasil pengujian",
+                'qualifications'  => "- Mahasiswa aktif semester 5+ jurusan Farmasi\n- IPK minimal 3.00\n- Teliti dan disiplin dalam mengikuti SOP\n- Bersedia bekerja di laboratorium",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman di fasilitas GMP internasional\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 6,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [51, 39, 64], // Excel, Data Analysis, Komunikasi
+            ],
+            [
+                'perusahaan_id'   => $id('Kimia Farma'),
+                'title'           => 'IT & Digital Transformation Intern',
+                'description'     => "Dukung transformasi digital Kimia Farma dalam membangun sistem informasi farmasi yang terintegrasi. Kamu akan berkontribusi dalam pengembangan aplikasi manajemen apotek dan gudang.",
+                'responsibilities'=> "- Membantu pengembangan aplikasi manajemen apotek\n- Mendukung integrasi sistem antar unit bisnis\n- Melakukan testing aplikasi\n- Membuat dokumentasi sistem",
+                'qualifications'  => "- Mahasiswa aktif jurusan Sistem Informasi / Teknik Informatika\n- Menguasai PHP, Python, atau Java\n- Familiar dengan database relasional\n- Mampu bekerja dalam tim",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman transformasi digital perusahaan farmasi BUMN\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 3,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [1, 2, 8, 20, 28], // PHP, Laravel, Python, MySQL, Git
+            ],
+            [
+                'perusahaan_id'   => $id('Kimia Farma'),
+                'title'           => 'Marketing & Brand Communication Intern',
+                'description'     => "Bergabunglah dengan tim Marketing Kimia Farma untuk membantu membangun kesadaran merek produk-produk kesehatan unggulan Kimia Farma di platform digital.",
+                'responsibilities'=> "- Membuat konten edukasi kesehatan untuk media sosial\n- Mendukung kampanye digital produk farmasi\n- Menganalisis insight dan engagement konten\n- Berkoordinasi dengan tim creative agency",
+                'qualifications'  => "- Mahasiswa aktif jurusan Marketing, Komunikasi, atau Kesehatan Masyarakat\n- Kreatif dan memiliki kemampuan copywriting yang baik\n- Familiar dengan Instagram, TikTok, dan platform digital\n- Memiliki ketertarikan di bidang kesehatan",
+                'benefits'        => "- Uang saku kompetitif\n- Portofolio konten brand nasional\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 3,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 158,
+                'skills'          => [56, 57, 58, 55], // Digital Marketing, Content Writing, Social Media, SEO
+            ],
+
+            // ── WASKITA (id: 10) ─────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('Waskita'),
+                'title'           => 'Teknik Sipil / Struktur Intern',
+                'description'     => "Waskita Karya membuka kesempatan magang bagi mahasiswa Teknik Sipil untuk terlibat langsung dalam proyek konstruksi infrastruktur skala nasional seperti jalan tol, jembatan, dan gedung bertingkat.",
+                'responsibilities'=> "- Membantu pengawasan dan pengukuran di lapangan\n- Mendukung perhitungan volume pekerjaan (quantity take-off)\n- Membantu penyusunan laporan kemajuan pekerjaan\n- Berkoordinasi dengan konsultan pengawas",
+                'qualifications'  => "- Mahasiswa aktif semester 5+ jurusan Teknik Sipil\n- Mampu membaca gambar teknik (shop drawing)\n- Familiar dengan AutoCAD\n- Bersedia ditempatkan di proyek (bisa di luar kota)",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman proyek infrastruktur nasional\n- Tunjangan transportasi & makan\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 10,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 157,
+                'skills'          => [51, 63, 39, 28], // Excel, Manajemen Proyek, Data Analysis, Git
+            ],
+            [
+                'perusahaan_id'   => $id('Waskita'),
+                'title'           => 'Keuangan & Akuntansi Proyek Intern',
+                'description'     => "Bergabunglah dengan tim Finance Waskita Karya untuk belajar pengelolaan keuangan proyek konstruksi skala besar. Pengalaman langsung dalam proses budgeting, forecasting, dan laporan keuangan proyek.",
+                'responsibilities'=> "- Membantu pencatatan dan rekonsiliasi keuangan proyek\n- Mendukung proses penagihan (billing) kepada owner\n- Menganalisis realisasi biaya vs anggaran\n- Menyiapkan laporan keuangan proyek",
+                'qualifications'  => "- Mahasiswa aktif jurusan Akuntansi atau Keuangan\n- Menguasai Microsoft Excel dengan baik\n- Teliti, jujur, dan memahami dasar akuntansi\n- Kemampuan analitik yang baik",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman keuangan proyek konstruksi skala besar\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 5,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 157,
+                'skills'          => [59, 60, 51, 61], // Akuntansi, Keuangan, Excel, Perpajakan
+            ],
+
+            // ── KIW (id: 11) ─────────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('Wijayakusuma'),
+                'title'           => 'Manajemen Bisnis & Investasi Intern',
+                'description'     => "Kawasan Industri Wijayakusuma membuka peluang magang bagi mahasiswa yang ingin memahami bisnis kawasan industri, mulai dari akuisisi tenant, manajemen lahan, hingga pelayanan investor.",
+                'responsibilities'=> "- Membantu riset dan analisis pasar investor potensial\n- Mendukung proses onboarding tenant baru\n- Menyiapkan presentasi dan proposal bisnis\n- Menganalisis data utilisasi lahan kawasan industri",
+                'qualifications'  => "- Mahasiswa aktif jurusan Manajemen, Ekonomi, atau Bisnis\n- Kemampuan analitis dan komunikasi yang baik\n- Menguasai Microsoft Office (Excel & PowerPoint)\n- Bersedia ditempatkan di Semarang",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman bisnis kawasan industri\n- Networking dengan investor dan industri\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 4,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 13,
+                'city_id'         => 220,
+                'skills'          => [51, 60, 63, 64, 39], // Excel, Keuangan, Manajemen Proyek, Komunikasi, Data Analysis
+            ],
+            [
+                'perusahaan_id'   => $id('Wijayakusuma'),
+                'title'           => 'IT & Sistem Informasi Intern',
+                'description'     => "KIW membuka peluang magang IT untuk mendukung digitalisasi layanan kawasan industri. Kamu akan terlibat dalam pengembangan portal tenant dan sistem manajemen kawasan.",
+                'responsibilities'=> "- Membantu pengembangan portal layanan tenant\n- Mendukung pengelolaan infrastruktur IT\n- Melakukan testing dan maintenance sistem\n- Membuat dokumentasi teknis",
+                'qualifications'  => "- Mahasiswa aktif jurusan Teknik Informatika / Sistem Informasi\n- Menguasai PHP/Laravel atau Python\n- Familiar dengan MySQL dan Git\n- Mampu bekerja mandiri dan dalam tim",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman IT di lingkungan kawasan industri\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 3,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 13,
+                'city_id'         => 220,
+                'skills'          => [1, 2, 20, 28, 47], // PHP, Laravel, MySQL, Git, REST API
+            ],
+
+            // ── PG CANDI BARU (id: 12) ───────────────────────────────
+            [
+                'perusahaan_id'   => $id('Candi Baru'),
+                'title'           => 'Teknik Mesin / Produksi Intern',
+                'description'     => "PG Candi Baru membuka kesempatan magang bagi mahasiswa Teknik Mesin untuk terlibat dalam proses produksi gula tebu dari mulai penggilingan tebu hingga pengemasan gula siap jual.",
+                'responsibilities'=> "- Membantu monitoring mesin produksi di pabrik\n- Mendukung kegiatan preventive maintenance\n- Membuat laporan kondisi mesin harian\n- Berkoordinasi dengan teknisi senior",
+                'qualifications'  => "- Mahasiswa aktif semester 5+ jurusan Teknik Mesin / Teknik Industri\n- Memahami dasar-dasar mesin industri\n- Bersedia bekerja shift di lingkungan pabrik\n- Fisik sehat dan siap kerja lapangan",
+                'benefits'        => "- Uang saku kompetitif\n- Tunjangan makan\n- Pengalaman industri gula BUMN\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 6,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 15,
+                'city_id'         => 242,
+                'skills'          => [51, 39, 63, 28], // Excel, Data Analysis, Manajemen Proyek, Git
+            ],
+            [
+                'perusahaan_id'   => $id('Candi Baru'),
+                'title'           => 'Agribisnis & Hubungan Petani Intern',
+                'description'     => "Bergabunglah dengan tim Agribisnis PG Candi Baru untuk belajar pengelolaan hubungan dengan petani tebu mitra. Kamu akan terlibat dalam program pembinaan dan pendampingan petani tebu lokal.",
+                'responsibilities'=> "- Membantu koordinasi dengan kelompok tani tebu mitra\n- Mendukung program penyuluhan dan pembinaan petani\n- Menganalisis data produksi tebu di lahan mitra\n- Menyusun laporan perkembangan kemitraan",
+                'qualifications'  => "- Mahasiswa aktif jurusan Agribisnis, Pertanian, atau Sosial Ekonomi Pertanian\n- Komunikatif dan mampu berinteraksi dengan petani\n- Bersedia turun ke lapangan / lahan pertanian\n- Memiliki kendaraan sendiri (diutamakan)",
+                'benefits'        => "- Uang saku kompetitif\n- Tunjangan transportasi lapangan\n- Pengalaman agribisnis nyata\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 4,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 15,
+                'city_id'         => 242,
+                'skills'          => [51, 64, 65, 39], // Excel, Komunikasi, Public Speaking, Data Analysis
+            ],
+
+            // ── MHD EXPRESS (id: 13) ─────────────────────────────────
+            [
+                'perusahaan_id'   => $id('MHD'),
+                'title'           => 'Logistik & Operasional Intern',
+                'description'     => "MHD Express membuka peluang magang di bidang operasional logistik dan kurir. Kamu akan belajar langsung bagaimana sistem pengiriman paket dikelola dari pickup hingga delivery ke tangan penerima.",
+                'responsibilities'=> "- Membantu koordinasi pickup dan delivery paket\n- Mendukung pengelolaan data pengiriman harian\n- Membantu rekap laporan operasional\n- Berkoordinasi dengan kurir dan agen",
+                'qualifications'  => "- Mahasiswa aktif jurusan Logistik, Manajemen, atau Teknik Industri\n- Mampu bekerja cepat dan di bawah tekanan\n- Komunikatif dan memiliki kemampuan problem solving\n- Familiar dengan Microsoft Excel",
+                'benefits'        => "- Uang saku bulanan\n- Pengalaman industri logistik\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 5,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 159,
+                'skills'          => [51, 63, 64, 39], // Excel, Manajemen Proyek, Komunikasi, Data Analysis
+            ],
+            [
+                'perusahaan_id'   => $id('MHD'),
+                'title'           => 'IT & Tracking System Intern',
+                'description'     => "MHD Express membuka peluang magang IT untuk mendukung pengembangan sistem tracking pengiriman berbasis web. Kamu akan berkontribusi langsung dalam fitur lacak paket real-time.",
+                'responsibilities'=> "- Membantu pengembangan fitur tracking paket\n- Mendukung integrasi API dengan mitra ekspedisi\n- Melakukan testing dan debugging sistem\n- Mendokumentasikan alur sistem",
+                'qualifications'  => "- Mahasiswa aktif jurusan Teknik Informatika / Sistem Informasi\n- Menguasai PHP atau Python\n- Familiar dengan REST API dan database MySQL\n- Familiar dengan Git",
+                'benefits'        => "- Uang saku bulanan\n- Pengalaman IT sistem logistik\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 2,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 159,
+                'skills'          => [1, 8, 20, 47, 28], // PHP, Python, MySQL, REST API, Git
+            ],
+
+            // ── ASSISTX (id: 14) ─────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('AssistX'),
+                'title'           => 'Business Analyst Intern',
+                'description'     => "AssistX Enterprise membuka posisi Business Analyst Intern bagi mahasiswa yang ingin mengembangkan kemampuan analisis bisnis dan konsultasi. Kamu akan terlibat dalam berbagai proyek konsultasi nyata untuk klien dari berbagai industri.",
+                'responsibilities'=> "- Membantu analisis proses bisnis klien\n- Mendukung pembuatan Business Requirements Document (BRD)\n- Membuat model data dan flowchart proses\n- Menyiapkan presentasi dan laporan rekomendasi",
+                'qualifications'  => "- Mahasiswa aktif semester 5+ berbagai jurusan\n- Kemampuan analisis dan pemecahan masalah yang kuat\n- Mahir Microsoft Excel dan PowerPoint\n- Komunikasi yang baik",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman konsultasi lintas industri\n- Mentoring dari konsultan senior\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 3,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 156,
+                'skills'          => [39, 51, 63, 64, 52], // Data Analysis, Excel, Manajemen Proyek, Komunikasi, Power BI
+            ],
+            [
+                'perusahaan_id'   => $id('AssistX'),
+                'title'           => 'Full Stack Developer Intern',
+                'description'     => "AssistX Enterprise membuka peluang magang Full Stack Developer untuk ikut membangun platform digital konsultasi bisnis kami. Kamu akan mengerjakan proyek end-to-end dari backend API hingga UI frontend.",
+                'responsibilities'=> "- Membangun fitur frontend menggunakan React atau Vue.js\n- Mengembangkan REST API dengan Laravel atau Node.js\n- Berkolaborasi dalam sprint Agile\n- Melakukan code review dan testing",
+                'qualifications'  => "- Mahasiswa aktif jurusan Teknik Informatika\n- Menguasai React atau Vue.js untuk frontend\n- Menguasai Laravel atau Node.js untuk backend\n- Familiar dengan MySQL/PostgreSQL dan Git",
+                'benefits'        => "- Uang saku kompetitif\n- Proyek portofolio nyata\n- Mentoring dari developer senior\n- Sertifikat magang resmi",
+                'work_system'     => 'remote',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 2,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 156,
+                'skills'          => [5, 6, 2, 7, 20, 21, 28, 50], // React, Vue, Laravel, Node, MySQL, PostgreSQL, Git, Agile
+            ],
+            [
+                'perusahaan_id'   => $id('AssistX'),
+                'title'           => 'Digital Marketing & Content Intern',
+                'description'     => "Bantu AssistX Enterprise membangun kehadiran digital yang kuat dan menarik klien baru melalui konten yang berkualitas dan strategi digital marketing yang terukur.",
+                'responsibilities'=> "- Membuat dan mengelola konten LinkedIn dan Instagram perusahaan\n- Menulis artikel blog dan studi kasus\n- Menjalankan kampanye iklan digital\n- Menganalisis performa konten dan iklan",
+                'qualifications'  => "- Mahasiswa aktif jurusan Marketing, Komunikasi, atau Bisnis\n- Pengalaman mengelola media sosial profesional\n- Kemampuan menulis konten B2B yang baik\n- Familiar dengan tools analitik digital",
+                'benefits'        => "- Uang saku kompetitif\n- Portofolio konten nyata\n- Fleksibilitas kerja remote\n- Sertifikat magang resmi",
+                'work_system'     => 'remote',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 2,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 11,
+                'city_id'         => 156,
+                'skills'          => [56, 57, 58, 55, 64], // Digital Marketing, Content Writing, Social Media, SEO, Komunikasi
+            ],
+
+            // ── AGRINAS (id: 15) ─────────────────────────────────────
+            [
+                'perusahaan_id'   => $id('Agrinas'),
+                'title'           => 'Teknologi Pengolahan Hasil Laut Intern',
+                'description'     => "PT Agrinas Jaladri Nusantara membuka peluang magang bagi mahasiswa Teknologi Hasil Perikanan / Pangan untuk terlibat dalam proses quality control dan inovasi produk olahan hasil laut.",
+                'responsibilities'=> "- Membantu proses quality control produk hasil laut\n- Mendukung riset pengembangan produk baru\n- Menganalisis parameter mutu produk di laboratorium\n- Membuat laporan hasil pengujian",
+                'qualifications'  => "- Mahasiswa aktif jurusan Teknologi Hasil Perikanan / Teknologi Pangan\n- Familiar dengan analisis laboratorium pangan\n- Teliti, disiplin, dan bertanggung jawab\n- IPK minimal 3.00",
+                'benefits'        => "- Uang saku kompetitif\n- Tunjangan makan\n- Pengalaman industri perikanan\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 4,
+                'deadline'        => $plus3,
+                'status'          => 'published',
+                'province_id'     => 15,
+                'city_id'         => 264,
+                'skills'          => [51, 39, 64, 63], // Excel, Data Analysis, Komunikasi, Manajemen Proyek
+            ],
+            [
+                'perusahaan_id'   => $id('Agrinas'),
+                'title'           => 'Supply Chain & Distribusi Intern',
+                'description'     => "Pelajari bagaimana rantai pasokan produk perikanan dikelola dari nelayan hingga ke konsumen akhir bersama tim Supply Chain PT Agrinas Jaladri Nusantara.",
+                'responsibilities'=> "- Membantu monitoring rantai pasok produk perikanan\n- Mendukung koordinasi pengiriman ke distributor\n- Menganalisis data stok dan perputaran produk\n- Menyusun laporan distribusi",
+                'qualifications'  => "- Mahasiswa aktif jurusan Manajemen, Logistik, atau Teknik Industri\n- Familiar dengan konsep supply chain management\n- Menguasai Microsoft Excel\n- Analitis dan mampu bekerja dalam tim",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman supply chain industri perikanan\n- Sertifikat magang resmi",
+                'work_system'     => 'onsite',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 3,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 15,
+                'city_id'         => 264,
+                'skills'          => [51, 63, 39, 64], // Excel, Manajemen Proyek, Data Analysis, Komunikasi
+            ],
+            [
+                'perusahaan_id'   => $id('Agrinas'),
+                'title'           => 'Digital Marketing & E-commerce Intern',
+                'description'     => "Bantu Agrinas Jaladri memasarkan produk olahan laut premium Indonesia ke pasar yang lebih luas melalui platform digital dan e-commerce.",
+                'responsibilities'=> "- Mengelola toko online di Tokopedia, Shopee, dan Lazada\n- Membuat konten produk yang menarik\n- Menganalisis data penjualan online\n- Mendukung kampanye iklan digital",
+                'qualifications'  => "- Mahasiswa aktif jurusan Marketing, Komunikasi, atau Bisnis\n- Familiar dengan platform e-commerce\n- Kreatif dalam membuat konten produk\n- Mampu menganalisis data penjualan",
+                'benefits'        => "- Uang saku kompetitif\n- Pengalaman e-commerce industri FMCG\n- Sertifikat magang resmi",
+                'work_system'     => 'hybrid',
+                'payment_type'    => 'paid',
+                'duration_months' => 3,
+                'quota'           => 2,
+                'deadline'        => $plus2,
+                'status'          => 'published',
+                'province_id'     => 15,
+                'city_id'         => 264,
+                'skills'          => [56, 57, 58, 51, 39], // Digital Marketing, Content Writing, Social Media, Excel, Data Analysis
+            ],
+        ];
+
+        foreach ($lowongans as $data) {
+            $skills = $data['skills'];
+            unset($data['skills']);
+            $lowongan = Lowongan::create($data);
+            $lowongan->skills()->sync($skills);
+        }
+    }
+}
